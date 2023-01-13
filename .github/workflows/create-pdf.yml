@@ -18,7 +18,7 @@ jobs:
         run: mkdir pdf
 
       - name: Copy Markdown files to PDF directory
-        run: cp "./**/*.md" "./pdf"
+        run: cp "./"**"/"*".md" "./pdf"
         shell: bash
 
       - name: Create PDF
