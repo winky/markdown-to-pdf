@@ -22,12 +22,7 @@ jobs:
         shell: bash
 
       - name: Create PDF
-        run: npx markdown-pdf ./**/*.md
-        working-directory: ./pdf
-        shell: bash
-
-      - name: Remove Makrdown files
-        run: rm -rf ./**/*.md
+        run: npx markdown-pdf "./"**"/"*".md"
         working-directory: ./pdf
         shell: bash
 
@@ -35,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: pdf
-          path: ./pdf
+          path: ./pdf/*.pdf
