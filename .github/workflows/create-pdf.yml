@@ -1,0 +1,38 @@
+name: Create PDF from Markdown
+
+on: workflow_dispatch
+
+jobs:
+  create-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - run: ls -la
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+      - name: Create PDF directory
+        run: mkdir pdf
+
+      - name: Copy Markdown files to PDF directory
+        run: cp "./**/*.md" "./pdf"
+        shell: bash
+
+      - name: Create PDF
+        run: npx markdown-pdf ./**/*.md
+        working-directory: ./pdf
+        shell: bash
+
+      - name: Remove Makrdown files
+        run: rm -rf ./**/*.md
+        working-directory: ./pdf
+        shell: bash
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdf
+          path: ./pdf
