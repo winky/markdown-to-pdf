@@ -22,7 +22,7 @@ jobs:
         shell: bash
 
       - name: Create PDF
-        run: npx markdown-pdf "./"**"/"*".md"
+        run: npx md-to-pdf "./"**"/"*".md"
         working-directory: ./pdf
         shell: bash
 
